@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>جدول مصروفات سنوي</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; direction: rtl; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        .red { background-color: red; }
+        .yellow { background-color: yellow; }
+        .orange { background-color: orange; }
+        .green { background-color: green; }
+        .gray { background-color: gray; }
+    </style>
+</head>
+<body>
+    <h1>جدول مصروفات لسنة {{ year }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>الشقة</th>
+                {% for month in months %}
+                    <th>{{ month }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for apartment, expenses in expense_data.items %}
+                <tr>
+                    <td>{{ apartment.number }} - {{ apartment.owner_name }}</td>
+                    {% for month in months %}
+                        <td class="{% if expenses.month %}{{ expenses.month.color }}{% else %}gray{% endif %}">
+                            {% if expenses.month %}
+                                {{ expenses.month.amount }} - {{ expenses.month.category }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

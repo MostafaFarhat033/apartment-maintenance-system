@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>الصفحة الرئيسية</title>
+</head>
+<body>
+    <h1>مرحبًا بك في نظام إدارة مصروفات الصيانة</h1>
+    <p><a href="{% url 'yearly_expenses' year=current_year %}">عرض مصروفات سنة {{ current_year }}</a></p>
+    <p><a href="{% url 'add_expense' %}">إضافة مصروف جديد</a></p>
+</body>
+</html>
