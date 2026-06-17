@@ -1,0 +1,9 @@
+<form method="post">
+    {% csrf_token %}
+    {{ form.apartment.label_tag }} {{ form.apartment }}
+    {{ form.month.label_tag }} {{ form.month }}
+    {{ form.amount.label_tag }} {{ form.amount }}
+    {{ form.category.label_tag }} {{ form.category }}
+    {{ form.color.label_tag }} {{ form.color }}
+    <button type="submit">Save</button>
+</form>
